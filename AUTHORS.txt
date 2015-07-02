@@ -1,0 +1,21 @@
+The DigiBreast Digital Phantom Data package was contributed by
+
+* Bin Deng, PhD, Massachusetts General Hospital
+Email: <bdeng1 at nmr.mgh.harvard.edu>, <ibindeng at gmail.com>
+URL: http://scholar.harvard.edu/bdeng
+
+Bin Deng is currently a postdoctoral Research Fellow at 
+Massachusetts General Hospital, Harvard Medical School.
+Address: Martinos Center for Biomedical Imaging, 
+         Massachusetts General Hospital, 
+         Harvard Medical School
+         Bldg 149, 13th St, Charlestown, MA 02129, USA
+
+
+* Qianqian Fang, PhD, Massachusetts General Hospital
+Email: <fangq at nmr.mgh.harvard.edu>, <fangqq at gmail.com>
+URL: http://nmr.mgh.harvard.edu/~fangq/
+
+
+* Mats Lundqvist, PhD, Philips Healthcare.
+Email: Mats.Lundqvist@philips.com

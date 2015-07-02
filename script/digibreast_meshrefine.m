@@ -15,12 +15,13 @@ function mesh_refined=digibreast_meshrefine(mesh,centroid,radius,maxvol)
 %   centroid: [x,y,z] coordinates of the center of desired refine region (in length unit)
 %   radius: radius of the sperical refined mesh region (in length unit)
 %   maxvol: maximum element volume
-%           For the DigiBreast phantom, the applied value is 0.1 (mm^-3) for
-%           forward mesh and 1 (mm^-3) for reconstruction mesh.
+%           For the DigiBreast phantom, the applied value is 0.1 (mm^3) for
+%           forward mesh and 1 (mm^3) for reconstruction mesh.
 %
 % output:
-%    mesh_refined: a struct with two fields containing the refined
-%                  "node"  (in length unit) and "elem" lists
+%    mesh_refined: a struct with two fields containing the refined "node" (in length unit) and "elem" lists
+%                  if the optional field "value" is defined in the input,
+%                  then mesh_refined will also have the cooresponding field "value".                      
 %
 % dependency:
 %    this function requires "meshrefine" and "meshcentroid" from iso2mesh toolbox.
@@ -47,6 +48,9 @@ function mesh_refined=digibreast_meshrefine(mesh,centroid,radius,maxvol)
 %    [Fang2009] Q. Fang and D. Boas, "Tetrahedral mesh generation from volumetric binary and 
 %               gray-scale images," Proceedings of IEEE International Symposium on Biomedical 
 %               Imaging 2009, 1142-1145 (2009).
+%
+% license:
+%    BSD License, see LICENSE_BSD.txt file for details
 %
 % -- this function is part of the OpenJData Project (http://openjd.sf.net/digibreast)
 %

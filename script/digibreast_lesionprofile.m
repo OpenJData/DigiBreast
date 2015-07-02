@@ -1,7 +1,6 @@
-function lesionprofile=digibreast_lesionprofile(node,centroid,size)
-
+function lesionprofile=digibreast_lesionprofile(node,centroid,fwhmsize)
 %
-% lesionprofile=digibreast_lesionprofile(node,centroid,size)
+% lesionprofile=digibreast_lesionprofile(node,centroid,fwhmsize)
 %
 % Generate the Gaussian sphere lesion profile at defined centroid.
 %
@@ -9,17 +8,28 @@ function lesionprofile=digibreast_lesionprofile(node,centroid,size)
 %         Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
 %
 % input:
-%   node: existing tetrahedral mesh node list (N x 3 array, in length unit)
+%   node: tetrahedral mesh node list (N x 3 array, in length unit)
 %   centroid: [x,y,z] coordinates of the lesion center (in length unit)
 %   size: full width half maximum (FWHM) of the Gaussian sphere profile (in length unit)
 %
 % output:
 %   lesionprofile: lesion profile with a Gaussian sphere shape (N x 1 array, in length unit)
 %
+% example:
+%   % to generate a Gaussian lesion profile that represents the volume fractions of a 5mm FWHM size lesion located within the adipose vicinity as shown in [Deng2015] on the forward mesh
+%   node=ForwardMesh.node;
+%   centroid=LesionCentroids.adipose;
+%   fwhmsize=5;
+%   lesionprofile=digibreast_lesionprofile(node,centroid,fwhmsize);
+%   figure;plotmesh([ForwardMesh.node lesionprofile],ForwardMesh.elem,'z=15','linestyle','none');colorbar;
+%
 % reference:
 %    [Deng2015] B. Deng, D. H. Brooks, D. A. Boas, M. Lundqvist, and Q. Fang, "Characterization of 
 %               structural-prior guided optical tomography using realistic breast models derived 
 %               from dual-energy x-ray mammography," Biomedical Optics Express 6(7): 2366-79 (2015)
+%
+% license:
+%    BSD License, see LICENSE_BSD.txt file for details
 %
 % -- this function is part of the OpenJData Project (http://openjd.sf.net/digibreast)
 %
@@ -31,7 +41,7 @@ end
 if(nargin<3)
     sigma=1;
 else
-    sigma=size/2.355;
+    sigma=fwhmsize/2.355;
 end
 
 dim=size(node,2);

@@ -16,6 +16,8 @@ function digibreast_savejson(matfile,outputdir,varargin)
 %        if ignored, the folders will be created under the path containing the .mat file
 %   param1,value1,...:  optional savejson parameters, see "help savejson" for details
 %
+% license:
+%    BSD License, see LICENSE_BSD.txt file for details
 %
 % -- this function is part of the OpenJData Project (http://openjd.sf.net/digibreast)
 %

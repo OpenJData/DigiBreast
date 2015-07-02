@@ -16,6 +16,9 @@ function val=digibreast_tablelookup(proplist,tissuetype,propname)
 % example:
 %   Sp_fib=digibreast_tablelookup(OpticalProperties,'fib','s_power');
 %
+% license:
+%    BSD License, see LICENSE_BSD.txt file for details
+%
 % -- this function is part of the OpenJData Project (http://openjd.sf.net/digibreast)
 %
 
