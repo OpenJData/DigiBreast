@@ -1,3 +1,4 @@
+   #[1]Monte Carlo eXtreme: GPU-based Monte Carlo Simulations
      __________________________________________________________________
 
 DigiBreast
@@ -8,7 +9,7 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
    DigiBreast
 
      * Version: 1.0
-     * Release date: July 7, 2015
+     * Release date: July 6, 2015
      * Created by: Bin Deng and Qianqian Fang
        {bdeng1,fangq}@nmr.mgh.harvard.edu
      * License: The DigiBreast phantom and source data are in the public
@@ -28,7 +29,7 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
 
                 3.3. [7]DigiBreast source data
 
-                3.4. [8]Script
+                3.4. [8]Scripts
 
           4. [9]Tissue optical properties
 
@@ -48,15 +49,15 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
    algorithms for mammographically compressed breasts. The development of
    this phantom was described in [13]Deng2015 with the original intent of
    testing a structure-prior guided image reconstruction algorithm for
-   combined mammography and diffuse optical tomography (DOT) imaging. This
-   digital breast phantom contains generic information such as 3D breast
-   shapes and internal anatomical structures. We believe such breast
-   phantom can address the needs for simulation-based validations for a
-   wide range of model-based imaging modalities. Potential utilities of
-   this digital phantom include, but not limited to, simulations of breast
-   deformation, 2D and 3D x-ray breast imaging, and tomographic imaging of
-   a compressed breast using optical, microwave, thermal and electrical
-   impedance methods.
+   combined x-ray mammography and diffuse optical tomography (DOT)
+   imaging. This digital breast phantom contains generic information such
+   as 3D breast shapes and internal anatomical structures. We believe such
+   breast phantom can address the needs for simulation-based validations
+   for a wide range of model-based imaging modalities. Potential utilities
+   of this digital phantom include, but not limited to, simulations of
+   breast deformation, 2D and 3D x-ray breast imaging, and tomographic
+   imaging of a compressed breast using tomographic optical, microwave,
+   thermal and electrical impedance methods.
 
    A unique aspect of this digital breast phantom is the inclusion of a
    realistic 3D glandularity map measured through a dual-energy x-ray
@@ -66,7 +67,7 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
    piece-wise-constant regions (using a binary segmentation algorithm).
    Such representation removes the fine spatial details in the breast
    anatomical images, and results in loss of information. Statistical, or
-   fuzzy segmentation methods avoids such information loss, and provides
+   fuzzy segmentation methods avoid such information loss, and provide
    spatially-varying tissue volume fraction maps. In our previous works
    [14]Fang2010, we have reported a joint x-ray/DOT image reconstruction
    algorithm utilizing a spatially varying tissue compositional model to
@@ -92,8 +93,14 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
 3.1. Folder structure
 
    The DigiBreast package contains a "data" folder and a "script" folder,
-   along with related documentation. The package file structure is
-   explained below.
+   along with related documentation. In the JSON and UBJSON formatted
+   packages, the data folder is replaced by either "json" or "ubjson". In
+   either folder, MATLAB variables that encode the DigiBreast Phantom are
+   saved as separate JSON and UBJSON formatted data files. These files can
+   be loaded into MATLAB using the free JSONLab toolbox
+   ([16]http://iso2mesh.sf.net/jsonlab).
+
+   The package file structure is explained below.
 
 DigiBreast
 ├── AUTHORS.txt                   # Acknowledgement of contributions
@@ -101,6 +108,10 @@ DigiBreast
 ├── data                          # DigiBreast data in MATLAB .mat format
 │   └── DigiBreast.mat              # DigiBreast main data
 │   └── DigiBreast_source.mat       # DigiBreast source data
+├── json                          # DigiBreast data in JSON format (optional)
+│   └── <<VariableName>>.json       # JSON files for each MATLAB variable
+├── ubjson                        # DigiBreast data in UBJSON format (optional)
+│   └── <<VariableName>>.ubj        # UBJSON files for each MATLAB variable
 ├── script                        # All related MATLAB scripts
 │   ├── digibreast_meshrefine.m     # Creating the refined meshes at a given ROI
 │   ├── digibreast_savejson.m       # Saving DigiBreast data in JSON and UBJSON
@@ -113,7 +124,7 @@ DigiBreast
 
    DigiBreast.mat is a MATLAB mat-file containing all essential components
    of the 3D digital breast phantom used in the simulation study as
-   presented in the [16]Deng2015 paper. It contains 4 data structures -
+   presented in the [17]Deng2015 paper. It contains 4 data structures -
    ForwardMesh, ReconMesh, LesionCentroids, and OpticalProperties. This
    phantom is built on the source images included in
    DigiBreast_source.mat, and a 2 cm slab was added toward the chest wall.
@@ -149,7 +160,7 @@ DigiBreast
           a MATLAB structure with two fields, "adipose" and
           "fibroglandular", containing the [x,y,z] lesion centroids (in
           mm) of the two simulated lesion locations (as used in the
-          [17]Deng2015 paper) within either adipose or fibroglandular
+          [18]Deng2015 paper) within either adipose or fibroglandular
           tissue vicinity.
 
    OpticalProperties
@@ -158,7 +169,7 @@ DigiBreast
           at 690 nm and 830 nm) of adipose and fibroglandular tissues, as
           well as of malignant lesions. These optical properties are
           estimated based on mean values of reconstruction optical images
-          for our previous clinical study published in [18]Fang2011.
+          for our previous clinical study published in [19]Fang2011.
           Optical properties are all properly labeled within the variable,
           and should be easy to interpret. A function included in this
           package, "digibreast_tablelookup.m", can also be used to look up
@@ -173,26 +184,26 @@ DigiBreast
    (CC view) using a Philips dual-energy mammographic system - MicroDose
    SI. The MAT-file includes variables Mammogram, Glandularity,
    ThicknessMap, and Registration. Users can choose to use our
-   readily-built 3D DigiBreast phantom in DigiBreast.mat, or to use the 2D
-   source images offered in DigiBreast_source.mat to customize their own
-   3D realistic breast phantoms.
+   readily-built 3D DigiBreast phantom in DigiBreast.mat, or to create
+   their own 3D realistic breast phantoms using different meshing settings
+   based on the 2D source images in DigiBreast_source.mat.
 
    Mammogram
-          A digital breast mammogram in the CC view (1x1 mm pixels). The
-          mammogram has been masked to exclude skin region.
+          A digital breast mammogram in the CC view (335x307 in 1x1 mm
+          pixels). The mammogram has been masked to exclude skin region.
 
    Glandularity
-          Fibroglandular tissue volume fraction map (1x1 mm pixels)
-          derived directly from the MicroDose SI measurement. This is the
-          "ground truth" glandularity referred in the [19]Deng2015 paper.
-          By stacking vertically and repeating this image, we can map the
-          forward mesh nodes into this 3D glandularity profile using the
-          Registration data structure below, and produce the subfield
-          ForwardMesh.glandularity.truth in DigiBreast.mat.
+          Fibroglandular tissue volume fraction map (335x307 in 1x1 mm
+          pixels) derived directly from the MicroDose SI measurement. This
+          is the "ground truth" glandularity referred in the [20]Deng2015
+          paper. By stacking vertically and repeating this image, we can
+          map the forward mesh nodes into this 3D glandularity profile
+          using the Registration data structure below, and produce the
+          subfield ForwardMesh.glandularity.truth in DigiBreast.mat.
 
    ThicknessMap
-          the measured breast thickness map at each pixel location (1x1 mm
-          pixels).
+          the measured breast thickness map at each pixel location
+          (335x307 in 1x1 mm pixels).
 
    Registration
           a 12 x 3 matrix representing the mapping between the mammogram
@@ -202,7 +213,7 @@ DigiBreast
           rows are the corresponding key-points in the optical probe space
           (the same as the mesh coordinate space).
 
-3.4. Script
+3.4. Scripts
 
    digibreast_lesionprofile.m
           Generate a Gaussian-sphere lesion profile at defined centroid.
@@ -210,8 +221,8 @@ DigiBreast
 Example
 
    To generate a Gaussian lesion profile that represents the volume
-   fractions of a 5mm FWHM lesion located within the adipose vicinity as
-   shown in [Deng2015] on the forward mesh
+   fractions of a 5 mm FWHM lesion located within the adipose vicinity as
+   shown in [21]Deng2015 on the forward mesh
 
  node=ForwardMesh.node;
  centroid=LesionCentroids.adipose;
@@ -228,8 +239,8 @@ Example
 
 Example
 
-   To generate the refined mesh used in [Deng2015] (see Table 1 for
-   details)
+   To generate the refined mesh used in [22]Deng2015 (see Table 1 in the
+   paper for details)
 
  mesh=ForwardMesh;
  mesh_refined=digibreast_meshrefine(mesh,LesionCentroids.adipose,10,0.1);
@@ -241,10 +252,10 @@ Example
  figure;
  subplot(121);
  plotmesh([mesh_refined.node mesh_refined.value(:,1)],mesh_refined.elem,'z=15',...
-    'linestyle','none');colorbar
+    'linestyle','none');colorbar;
  subplot(122);
  plotmesh([mesh_refined.node mesh_refined.value(:,2)],mesh_refined.elem,'z=15',...
-    'linestyle','none');colorbar
+    'linestyle','none');colorbar;
 
    digibreast_priors.m
           Generate tissue compositional priors for the DigiBreast phantom.
@@ -264,8 +275,10 @@ Example
  plotmesh([ForwardMesh.node priors.normal(:,2)],ForwardMesh.elem,'z=15',...
     'linestyle','none');
  title('Fibroglandular tissue volume fractions');colorbar;
- % to generate 3-compositional normal and lesion tissue priors using the
- % same glandularity map derived from dual gaussian segmentation algorithm
+
+   To generate 3-compositional normal and lesion tissue priors using the
+   same glandularity map derived from dual gaussian segmentation algorithm
+
  lesionprofile=digibreast_lesionprofile(ForwardMesh.node,LesionCentroids.adipose,5);
  priors=digibreast_priors(ForwardMesh.glandularity.dualgaussian,lesionprofile);
  figure;
@@ -318,13 +331,14 @@ Example
    Some of the scripts included in this package requires the installation
    of the "iso2mesh" and "JSONLab" toolboxes. To download these toolboxes:
 
-     * iso2mesh: [20]http://iso2mesh.sourceforge.net/
-     * JSONLab [21]http://iso2mesh.sourceforge.net/jsonlab
+     * iso2mesh: [23]http://iso2mesh.sourceforge.net/
+     * JSONLab [24]http://iso2mesh.sourceforge.net/jsonlab
 
    If you use this DigiBreast phantom main or source data in your
-   publication, please cite the phantom version number (currently
-   Version_1) to avoid conflict to any further updates of this mesh. We
-   are also appreciated if you can cite the [22]Deng2015 paper below.
+   publication, please cite the phantom version number (currently Version
+   1) to avoid conflict to any further updates of this mesh. If you use
+   DigiBreast data in your research, the authors are appreciated if you
+   can cite the [25]Deng2015 paper below in your related publications.
 
 6. Reference
 
@@ -351,7 +365,7 @@ References
    5. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Folder_structure
    6. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#DigiBreast_phantom_data
    7. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#DigiBreast_source_data
-   8. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Script
+   8. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Scripts
    9. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Tissue_optical_properties
   10. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Footnote
   11. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Reference
@@ -359,10 +373,13 @@ References
   13. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
   14. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Fang2010
   15. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
-  16. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
+  16. http://iso2mesh.sf.net/jsonlab
   17. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
-  18. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Fang2011
-  19. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
-  20. http://iso2mesh.sourceforge.net/
-  21. http://iso2mesh.sourceforge.net/jsonlab
+  18. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
+  19. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Fang2011
+  20. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
+  21. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
   22. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
+  23. http://iso2mesh.sourceforge.net/
+  24. http://iso2mesh.sourceforge.net/jsonlab
+  25. http://mcx.sourceforge.net/cgi-bin/index.cgi?DigiBreast#Deng2015
