@@ -1,4 +1,3 @@
-   #[1]Monte Carlo eXtreme: GPU-based Monte Carlo Simulations
      __________________________________________________________________
 
 DigiBreast
