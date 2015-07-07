@@ -9,12 +9,15 @@ A Complex Digital Breast Phantom with 3D Tissue Compositions
 
      * Version: 1.0
      * Release date: July 6, 2015
-     * Created by: Bin Deng and Qianqian Fang
-       {bdeng1,fangq}@nmr.mgh.harvard.edu
+     * Created by: Bin Deng <bdeng1 at nmr.mgh.harvard.edu>, and Qianqian
+       Fang <fangq at nmr.mgh.harvard.edu>
      * License: The DigiBreast phantom and source data are in the public
        domain; the MATLAB scripts are covered under the BSD license.
        Please refer to the LICENSE_BSD.txt for proper use and
        redistribution of the contents.
+     * Acknowledgement: The mammogram and glandularity source images were
+       measured using a Philips MicroDose SI mammography system,
+       contributed by Philips Healthcare.
 
           1. [2]Download
 
