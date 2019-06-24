@@ -12,9 +12,11 @@ Address: Martinos Center for Biomedical Imaging,
          Bldg 149, 13th St, Charlestown, MA 02129, USA
 
 
-* Qianqian Fang, PhD, Massachusetts General Hospital
-Email: <fangq at nmr.mgh.harvard.edu>, <fangqq at gmail.com>
-URL: http://nmr.mgh.harvard.edu/~fangq/
+* Qianqian Fang, PhD, 
+Assistant Professor, 
+Department of Bioengineering, Northeastern University
+Email: <q.fang at neu.edu>, <fangqq at gmail.com>
+URL: http://fanglab.org
 
 
 * Mats Lundqvist, PhD, Philips Healthcare.

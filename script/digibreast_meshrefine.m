@@ -5,7 +5,7 @@ function mesh_refined=digibreast_meshrefine(mesh,centroid,radius,maxvol)
 % Refine the input mesh within a spherical region centered at centroid.
 %
 % Authors: Bin Deng (bdeng1 <at> nmr.mgh.harvard.edu)
-%          Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
+%          Qianqian Fang (q.fang <at> neu.edu)
 %
 % input:
 %   mesh: a struct with at least two fields "node" and "elem"

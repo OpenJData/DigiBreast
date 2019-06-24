@@ -5,7 +5,7 @@ function lesionprofile=digibreast_lesionprofile(node,centroid,fwhmsize)
 % Generate the Gaussian sphere lesion profile at defined centroid.
 %
 % Author: Bin Deng (bdeng1 <at> nmr.mgh.harvard.edu)
-%         Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
+%         Qianqian Fang (q.fang <at> neu.edu)
 %
 % input:
 %   node: tetrahedral mesh node list (N x 3 array, in length unit)

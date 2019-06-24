@@ -5,7 +5,7 @@ function priors=digibreast_priors(glandularity,lesionprofile)
 % Generate tissue compositional priors for the DigiBreast phantom.
 %
 % Author: Bin Deng (bdeng1 <at> nmr.mgh.harvard.edu)
-%         Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
+%         Qianqian Fang (q.fang <at> neu.edu)
 %
 % input:
 %   glandularity: volume fractions of fibroglandular tissue (N x 1 array, values between 0 and 1)

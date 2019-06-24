@@ -6,7 +6,7 @@ function digibreast_savejson(matfile,outputdir,varargin)
 %
 % Export DigiBreast mesh data into JSON and UBJSON files
 %
-% Author: Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
+% Author: Qianqian Fang (q.fang <at> neu.edu)
 %
 % input:
 %   matfile: the full or relative path to the DigiBreast.mat file

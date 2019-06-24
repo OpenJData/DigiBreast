@@ -4,7 +4,7 @@ function val=digibreast_tablelookup(proplist,tissuetype,propname)
 %
 % Search optical properties from the OpticalProperties table by tissue and property names
 %
-% Author: Qianqian Fang (fangq <at> nmr.mgh.harvard.edu)
+% Author: Qianqian Fang (q.fang <at> neu.edu)
 %
 % input:
 %   proplist: the OpticalProperties (2D cell array with the first column/row as indices)
@@ -21,6 +21,11 @@ function val=digibreast_tablelookup(proplist,tissuetype,propname)
 %
 % -- this function is part of the OpenJData Project (http://openjd.sf.net/digibreast)
 %
+
+if(isa(proplist,'table'))
+    val=proplist{tissuetype, propname}{:};
+    return;
+end
 
 rowid=find(strcmpi(proplist(:,1),tissuetype));
 if(isempty(rowid))
