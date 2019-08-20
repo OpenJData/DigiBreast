@@ -1,4 +1,4 @@
-if(exist('zmat')~=3)
+if(exist('zmat')~=2)
     error('you must install ZMat toolbox to use this feature: http://github.com/fangq/zmat_mex')
 end
 
